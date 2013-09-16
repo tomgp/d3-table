@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="table.js"></script>
+<script type="text/javascript">
+	d3.csv('data/read.csv', function(d){
+		console.log(d);
+		d3.table(d)
+	});
+</script>
+
+</html>
