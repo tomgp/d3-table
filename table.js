@@ -8,13 +8,16 @@ d3.table = function( data, opts ){
     d3.table.data = data;
     d3.table.parent = opts.parent ? opts.parent : 'body';
     d3.table.columns = opts.columns ? opts.columns : Object.keys( data[0] );
-    d3.table.classes = opts.classes ? opts.classes : {};
+    d3.table.columnGroups = opts.columnGroups ? opts.columnGroups : {};
+    d3.table.cellFormats = opts.cellFormats ? opts.cellFormats : {};
     d3.table.id = opts.id ? opts.id : 'my-table';
 
     var table = d3.select(d3.table.parent)
       .append('table')
         .attr('class', 'd3-table')
         .attr('id', d3.table.id);
+
+    //TODO: colums groups
 
     //headers
     table
