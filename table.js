@@ -2,6 +2,11 @@ d3.table = {};
 
 //render a table using the magic of d3 selections etc.
 d3.table = function( data, opts ){
+
+  function nonBreaking(s){
+    return (s.split('-').join('&#8209;'));
+  }
+
   if( data ){
     //config
     opts = opts ? opts : {};
@@ -10,6 +15,7 @@ d3.table = function( data, opts ){
     d3.table.columns = opts.columns ? opts.columns : Object.keys( data[0] );
     d3.table.columnGroups = opts.columnGroups ? opts.columnGroups : {};
     d3.table.cellFormats = opts.cellFormats ? opts.cellFormats : {};
+    d3.table.rowStyler = opts.rowStyler ? opts.rowStyler : function(){return ''}; 
     d3.table.id = opts.id ? opts.id : 'my-table';
 
     var table = d3.select(d3.table.parent)
@@ -21,12 +27,13 @@ d3.table = function( data, opts ){
 
     //headers
     table
+      .append('thead')
       .append('tr')
       .selectAll('th')
       .data(d3.table.columns)
       .enter()
       .append('th')
-        .text(function(d,i){ return d })
+        .html(function(d,i){ return nonBreaking(d) })
         .attr('class','d3-table-header-cell');
 
     //content

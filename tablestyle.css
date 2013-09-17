@@ -1,0 +1,23 @@
+body{
+	font-family: sans-serif;
+}
+
+table.d3-table{
+	color: #333;
+}
+
+th.d3-table-header-cell{
+	background-image:  url('header-background.svg');
+	background-repeat: no-repeat;
+	background-position: bottom;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
+	padding-bottom: 0.5rem;
+	font-size: 1.5rem;
+}
+
+td{
+	font-weight: lighter;	
+	padding-left: 1rem;
+	padding-right: 1rem;
+}

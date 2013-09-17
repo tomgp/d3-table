@@ -1,6 +1,7 @@
 <html>
 <head>
-	<title></title>
+	<title>Table!</title>
+	<link href="tablestyle.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -12,6 +13,9 @@
 		console.log(d);
 		d3.table(d)
 	});
+	window.onscroll = function(e){
+		console.log(window.pageYOffset);
+	}
 </script>
 
 </html>
