@@ -15,9 +15,14 @@ d3.table = function( data, opts ){
     d3.table.columns = opts.columns ? opts.columns : Object.keys( data[0] );
     d3.table.columnGroups = opts.columnGroups ? opts.columnGroups : {};
     d3.table.cellFormats = opts.cellFormats ? opts.cellFormats : {};
-    d3.table.rowStyler = opts.rowStyler ? opts.rowStyler : function(){return ''}; 
+    d3.table.rowStyler = opts.rowStyler ? opts.rowStyler : function(d,i){
+          if(i%2===0){
+             return 'd3-table-row odd';
+          }
+          return 'd3-table-row even';
+        };
     d3.table.id = opts.id ? opts.id : 'my-table';
-
+    console.log(d3.table.rowStyler);
     var table = d3.select(d3.table.parent)
       .append('table')
         .attr('class', 'd3-table')
@@ -42,12 +47,7 @@ d3.table = function( data, opts ){
       .data( d3.table.data )
       .enter()
         .append('tr')
-        .attr('class',function(d, i){
-          if(i%2===0){
-            return 'd3-table-row odd';
-          }
-          return 'd3-table-row even';
-        })
+        .attr('class',d3.table.rowStyler)
         .each(function(record, i){
           d3.select(this).selectAll('td')
             .data(d3.table.columns)

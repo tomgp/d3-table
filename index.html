@@ -1,21 +1,48 @@
 <html>
-<head>
-	<title>Table!</title>
-	<link href="tablestyle.css" rel="stylesheet" type="text/css">
-</head>
-<body>
+	<head>
+		<title>Table!</title>
+		<link href="tablestyle.css" rel="stylesheet" type="text/css">
+	</head>
+	<body>
 
-</body>
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script type="text/javascript" src="table.js"></script>
-<script type="text/javascript">
-	d3.csv('data/read.csv', function(d){
-		console.log(d);
-		d3.table(d)
-	});
-	window.onscroll = function(e){
-		console.log(window.pageYOffset);
-	}
-</script>
+	</body>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="table.js"></script>
+	<script type="text/javascript">
+		var readConfig = {
+			columns: ['date','title','authors'],
+			rowStyler: function(d,i){
+				r = 'd3-table-row';
+				switch (d.rating){
+					case '++':
+						var r = 'great-read';
+						break;
+					case '+':
+						r = 'good-read';
+						break;
+					case '-':
+						r = 'bad-read';
+						break;
+					case '--':
+						r = 'dreadful-read';
+						break;
+				}
+				if(i%2==0){
+					r += ' odd';
+				}else{
+					r += ' even';
+				}
+				return r;
+			}
+		};
 
+		d3.csv('data/read.csv', function(d){
+			//split the data into finished and ongoing
+			console.log(d);
+			d3.table(d, readConfig)
+		});
+		window.onscroll = function(e){
+			console.log(window.pageYOffset);
+		}
+	</script>
 </html>
