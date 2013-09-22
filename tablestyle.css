@@ -29,18 +29,81 @@ td{
 	padding-right: 1rem;
 }
 
+
 .dreadful-read{
-	background-color: #E48EAE;
+	background-color: #FF928D;
+	color: #850000;
 }
 
 .bad-read{
-	background-color: #E4BCCB;
+	background-color: #FFC2C2;
+	color: #850000;
 }
 
 .good-read{
-	background-color: #E9FBC0;
+	background-color: #CBEDC3;
+	color: #014900;
 }
 
 .great-read{
-	background-color: #D4FB79;
+	background-color: #9BDE92;
+	color: #014900;
+}
+
+.nav-container{
+	text-align: center;
+}
+
+.nav{
+	padding-bottom: 2rem;
+}
+
+.tab-button{
+	text-align: center;
+	font-size: 2rem;
+	padding-top: 2rem;	
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0.5rem;
+	color: #2276CE;
+}
+
+.tab-button:hover{
+	background-color: #ddd;
+	color: #fff;
+}
+
+.active-tab{
+	color: #333;
+	font-weight: bold;;
+}
+
+.inactive-tab{
+	border-bottom: solid 1px #2276CE;
+	cursor: pointer;
+}
+
+
+.key-container{
+	text-align: center;
+}
+
+.key{
+	display: inline-block;
+	margin: 0 auto;
+
+	margin-bottom: 1rem;
+}
+
+.label{
+	display: inline-block;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.key-swatch{
+	border: solid 1px rgb(245, 245, 245);
+	width: 50px;
+	height: 50px;
+	display: inline-block;
 }

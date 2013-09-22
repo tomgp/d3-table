@@ -22,7 +22,7 @@ d3.table = function( data, opts ){
           return 'd3-table-row even';
         };
     d3.table.id = opts.id ? opts.id : 'my-table';
-    console.log(d3.table.rowStyler);
+   // console.log(d3.table.rowStyler);
     var table = d3.select(d3.table.parent)
       .append('table')
         .attr('class', 'd3-table')
