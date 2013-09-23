@@ -4,33 +4,40 @@
 		<link href="tablestyle.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
+<!-- navigation -->
 		<div class='nav-container'>
 			<div class='nav' id='main-nav'><span class="tab-button active-tab" id="reading-tab-button">Reading</span><span class="tab-button inactive-tab" id="read-tab-button">Read</span><span class="tab-button inactive-tab" id="breakdown-tab-button">Breakdown</span></div>
 		</div>
-	
-		<div>
+<!-- end navigation -->
+<div class='content'>
+<!-- tab pages -->
+		<div id="reading-tab-page" class="tab-page">
 			<div id="ongoing-table"></div>
 		</div>
 
 		
-		<div id='read'>
-			<div class='key-container'>
+		<div id="read-tab-page" class="tab-page">
+			<!-- <div class='key-container'>
 				<div class="key">
 					<div class="label">Recommended &ndash; </div><div class='great-read key-swatch'></div> <div class='good-read key-swatch'></div> <div class="key-swatch"></div> <div class='bad-read key-swatch'></div> <div class='dreadful-read key-swatch'></div><div class="label"> &ndash; Un-reccomended</div>
 				</div>
-			</div>
+			</div>-->
 			<div id="read-table"></div>
 		</div>
-		<div id="breakdown">
-			breakdown
-		</div>
 
+		<div id="breakdown-tab-page" class="tab-page">
+			<!--breakdown-->
+		</div>
+<!-- end tab pages -->
+</div>
 	</body>
 	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>
 	<script type="text/javascript" src="table.js"></script>
 	<script type="text/javascript" src="buttongroup.js"></script>
 	<script type="text/javascript">
+
+		var currentPage = 'reading-tab-page';
 
 		function divideArray(a, f){
 			var arrays = [[],[]];
@@ -94,8 +101,22 @@
 
 		$(function(){
 			console.log('ready');
-			makeButtonGroup(['#reading-tab-button','#read-tab-button','#breakdown-tab-button'],function(e){ console.log(e) }, 'reading-tab-button', 'active-tab', 'inactive-tab' );
+			makeButtonGroup(['#reading-tab-button','#read-tab-button','#breakdown-tab-button'], pageChange, 'reading-tab-button', 'active-tab', 'inactive-tab' );
 		})
+
+		function pageChange(e){
+			var to = e.split('-button')[0]+'-page';
+			console.log('change to',  to);
+			if(to===currentPage){
+				console.log("actualy, don't bother") 
+				return };
+			console.log('#'+currentPage);
+			$('#'+currentPage).hide();
+			$('#'+to).show();
+			currentPage = to;
+
+//			$( '#' + currentPage )animate({properties}, { duration: msec, easing: type, complete: fn })
+		}
 
 		window.onscroll = function(e){
 			console.log(window.pageYOffset);
